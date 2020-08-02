@@ -37,12 +37,12 @@ res.send("You have successfully signed logged a request!")
     const chn = await reqs.findOne({ uid: req.body.uid })
     chn.status = req.body.status;
     chn.staff = req.body.staff;
-    const doc = await chn.save()
+    const doc = await reqs.save()
     res.send(doc)
   });
   router.delete("/delete", async (req,res) => {
     if (!req.body.uid) {res.send("UID field is missing!"); return;} if (!req.body.staff) {res.send("Name field is missing!"); return;} if (!req.body.status) {res.send("E-Mail field is missing!"); return;}
-    const doc = await chn.deleteOne({ uid: req.body.uid })
+    const doc = await reqs.deleteOne({ uid: req.body.uid })
     res.send("OK")
   });
 module.exports = router;
