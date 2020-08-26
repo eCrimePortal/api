@@ -46,7 +46,9 @@ app.use(async function (req, res, next) {
   if (!auth) {
     return res.status(403).json({ message: "Invalid key" });
   }
-
+  if (auth.permission === "8") {
+    return next();
+  }
   if (parseInt(auth.calls) >= parseInt(auth.limit)) {
     return res.status(429).json({ message: "Exceeded your rate limit" });
   }
