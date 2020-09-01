@@ -59,9 +59,9 @@ app.use(async function (req, res, next) {
   await auth.save();
   next();
 });
+
 app.use(async function (req, res, next) {
   const ipauth = await others.findOne({ ip: req.connection.remoteAddress });
-  console.log(req.connection.remoteAddress);
   if (!ipauth) {
     return res.status(403).json({ message: "The API is IP whitelisted" });
   }
