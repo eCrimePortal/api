@@ -6,7 +6,8 @@ var signups = new Schema({
   key          : String,
   calls        : String,
   limit        : String,
-  permission   : String
+  permission   : String,
+  email        : String
 });
 
 module.exports = mongoose.model('users', signups);
