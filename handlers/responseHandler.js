@@ -13,23 +13,51 @@ async function webhook(body, title, color) {
   });
 }
 
-exports.nf = (nfres, discord) => {
+exports.s404 = (nfres, discord) => {
   console.log(`[Not Found]: ${nfres}`);
   if (discord) {
     webhook(nfres, "Not Found (API)", "16711680");
   }
 };
 
-exports.br = (brres, discord) => {
+exports.s400 = (brres, discord) => {
   console.log(`[Bad Request]: ${brres}`);
   if (discord) {
     webhook(brres, "Bad Request (API)", "16711680");
   }
 };
 
-exports.ise = (iseres, discord) => {
+exports.s500 = (iseres, discord) => {
   console.log(`[Internal Server Error]: ${iseres}`);
   if (discord) {
     webhook(iseres, "Internal Server Error (API)", "16711680");
+  }
+};
+
+exports.s201 = (iseres, discord) => {
+  console.log(`[Record Created]: ${iseres}`);
+  if (discord) {
+    webhook(iseres, "Record Created", "16711680");
+  }
+};
+
+exports.s401 = (iseres, discord) => {
+  console.log(`[Unauthorized]: ${iseres}`);
+  if (discord) {
+    webhook(iseres, "Unauthorized (API)", "16711680");
+  }
+};
+
+exports.s403 = (iseres, discord) => {
+  console.log(`[Forbidden]: ${iseres}`);
+  if (discord) {
+    webhook(iseres, "Foribidden (API)", "16711680");
+  }
+};
+
+exports.s429 = (iseres, discord) => {
+  console.log(`[Rate Limit Reached]: ${iseres}`);
+  if (discord) {
+    webhook(iseres, "Rate Limit Reached (API)", "16711680");
   }
 };
